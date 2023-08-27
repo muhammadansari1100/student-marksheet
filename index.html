@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="pics.favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="heading-p">Board of Intermediate Education Karachi</h1>
+
+        <form class="main">
+            <div class="input-group">
+                <label for="Sname">Student Name</label>
+                <input type="text" placeholder="Enter Student name...." id="Sname">
+            </div>
+
+            <div class="input-group">
+                <label for="fname">Father Name</label>
+                <input type="text" placeholder="Enter Father name...." id="fname">
+            </div>
+
+            <div class="input-group">
+                <label for="Roll-no">Roll Number</label>
+                <input type="text" placeholder="Enter Roll no...." id="Roll-no">
+            </div>
+
+            <div class="input-group">
+                <label for="class">College Name</label>
+                <input type="text" placeholder="Enter College name...." id="class">
+            </div>
+        </form>
+
+        <h2 class=".heading-p">Subject Marks</h2>
+
+        <form class="main">
+            <div class="input-group">
+                <label for="english">English Marks</label>
+                <input type="number" placeholder="Enter English marks" id="english">
+            </div>
+
+            <div class="input-group">
+                <label for="urdu">Urdu Marks</label>
+                <input type="number" placeholder="Enter Urdu marks" id="urdu">
+            </div>
+
+            <div class="input-group">
+                <label for="math">Math Marks</label>
+                <input type="number" placeholder="Enter Math marks" id="math">
+            </div>
+
+            <div class="input-group">
+                <label for="physics">Physics Marks</label>
+                <input type="number" placeholder="Enter Physics marks" id="physics">
+            </div>
+
+            <div class="input-group">
+                <label for="pst">PST Marks</label>
+                <input type="number" placeholder="Enter PST marks" id="pst">
+            </div>
+
+            <div class="input-group">
+                <label for="computer">Computer Marks</label>
+                <input type="number" placeholder="Enter Computer marks" id="computer">
+            </div>
+
+            <button type="button" onclick="grading()">Generate Marksheet</button>
+        </form>
+    </div>
+
+    <script>
+
+
+        function grading() {
+            let Sname = document.querySelector("#Sname").value;
+            let fname = document.querySelector("#fname").value;
+            let Rollno = document.querySelector("#Roll-no").value;
+            let clas = document.querySelector("#class").value;
+            let english = +document.querySelector("#english").value;
+            let urdu = +document.querySelector("#urdu").value;
+            let math = +document.querySelector("#math").value;
+            let physics = +document.querySelector("#physics").value;
+            let pst = +document.querySelector("#pst").value;
+            let computer = +document.querySelector("#computer").value;
+            let total = urdu + math + physics + computer + english + pst; // Using unary plus
+            let percentage = (total / 600) * 100;
+            let grade;
+            let engremarks;
+            let urduremarks;
+            let physicsremarks;
+            let computerremarks;
+            let pstremarks;
+            let mathremarks;
+
+// ----------------------English remarks condition-------------
+            if (english <= 39) {
+                engremarks = "Failed"
+            } else {
+                engremarks = "passed"
+            }
+            
+// ----------------------Urdu remarks condition------------ 
+if (urdu <= 39) {
+                urduremarks = "Failed"
+            } else {
+                urduremarks = "passed"
+            }
+// ----------------------Math remarks condition------------ 
+if (math <= 39) {
+                mathremarks = "Failed"
+            } else {
+                mathremarks = "passed"
+            }
+// ----------------------computer remarks condition------------ 
+
+if (computer <= 39) {
+                computerremarks = "Failed"
+            } else {
+                computerremarks = "passed"
+            }
+// ----------------------physics remarks condition------------ 
+
+
+if (physics <= 39) {
+                physicsremarks = "Failed"
+            } else {
+                physicsremarks = "passed"
+            }
+// ----------------------pst remarks condition------------ 
+if (pst <= 39) {
+                pstremarks = "Failed"
+            } else {
+                pstremarks = "passed"
+            }
+
+
+
+
+
+//---------------------- percentage condition -------------//
+            
+
+            if (percentage >= 80) {
+                grade = "A-one";
+            } else if (percentage >= 69) {
+                grade = "A";
+            } else if (percentage >= 59) {
+                grade = "B";
+            } else if (percentage >= 49) {
+                grade = "C";
+            } else if (percentage >= 39) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            if (
+                Sname != "" &&
+                fname != "" &&
+                Rollno != "" &&
+                clas != "" &&
+                english != "" &&
+                urdu != "" &&
+                math != "" &&
+                physics != "" &&
+                pst != "" &&
+                computer != "" &&
+                total != "" &&
+                !isNaN(percentage) &&
+                grade != "" &&
+              
+
+                
+                urdu <= 100 &&
+                urdu >=1 &&
+                 english <=100 &&
+                english >= 1 &&
+                computer <=100 &&
+                computer>=1 &&
+                math <= 100 &&
+                math >= 1 &&
+                pst <= 100 &&
+                pst >= 1 &&
+                physics <= 100 && 
+                physics >= 1 
+                
+                // math <= 100 &&
+                // math >=1 &&
+                
+                // physics <= 100 &&
+                // physics >=1 &&
+
+                // computer <= 100 &&
+                // computer >=1 &&
+
+                // english <= 100 &&
+                // english >=1 &&
+
+                // pst <= 100 &&
+                // pst >=1
+
+                //    english>100,
+                //    math>100,
+                //    physics>100,
+                //    computer>100,
+                //    pst>=101
+            ) {
+                if ('sessionStorage' in window) {
+                    sessionStorage.setItem("Username", Sname);
+                    sessionStorage.setItem("Fathername", fname);
+                    sessionStorage.setItem("Roll", Rollno);
+                    sessionStorage.setItem("class", clas);
+                    sessionStorage.setItem("english", english);
+                    sessionStorage.setItem("urdu", urdu);
+                    sessionStorage.setItem("math", math);
+                    sessionStorage.setItem("physics", physics);
+                    sessionStorage.setItem("computer", computer);
+                    sessionStorage.setItem("pst", pst);
+
+                    window.location.href = "output.html";
+                }
+            } else {
+                alert("Please enter the valid information.");
+            }
+        }
+    </script>
+</body>
+
+</html>

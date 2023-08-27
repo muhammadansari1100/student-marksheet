@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" href="pics.favicon.png" type="image/x-icon">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-heading-p" style="   color: #428bca; font-weight: bold;">
+            Board of Intermediate Education Karachi
+        </div>
+
+        <div>
+            <p><strong>Student Name:</strong> <span id="outputSname"></span></p>
+            <p><strong>Father Name:</strong> <span id="outputFname"></span></p>
+            <p><strong>Roll Number:</strong> <span id="outputRollno"></span></p>
+            <p><strong>College name:</strong> <span id="outputClass"></span></p>
+        </div>
+
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Remarks</th>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td id="outputEnglish"></td>
+                <td id="outputengremarks"></td>
+            </tr>
+            <tr>
+                <td>Urdu</td>
+                <td id="outputUrdu"></td>
+                <td id="outputurduremarks"></td>
+
+            </tr>
+            <tr>
+                <td>Math</td>
+                <td id="outputMath"></td>
+                <td id="outputmathremarks"></td>
+
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td id="outputPhysics"></td>
+                <td id="outputphysicsremarks"></td>
+
+            </tr>
+            <tr>
+                <td>PST</td>
+                <td id="outputPst"></td>
+                <td id="outputpstremarks"></td>
+
+            </tr>
+            <tr>
+                <td>Computer</td>
+                <td id="outputComputer"></td>
+                <td id="outputcomputerremarks"></td>
+
+            </tr>
+        </table>
+
+        <p><strong>Total Marks:</strong> <span id="outputTotal"></span></p>
+        <p><strong>Percentage:</strong> <span id="outputPercentage"></span>%</p>
+        <p><strong>Grade:</strong> <span id="outputGrade" class="grade"></span></p>
+        <!-- <p><strong>remarks:</strong> <span id="outputremarks" class="remarks"></span></p> -->
+
+    </div>
+
+    <script>
+
+        // Retrieve values from session storage
+        let Sname = sessionStorage.getItem("Username");
+        let fname = sessionStorage.getItem("Fathername");
+        let Rollno = sessionStorage.getItem("Roll");
+        let clas = sessionStorage.getItem("class");
+        let english = +sessionStorage.getItem("english");
+        let urdu = +sessionStorage.getItem("urdu");
+        let math = +sessionStorage.getItem("math");
+        let physics = +sessionStorage.getItem("physics");
+        let pst = +sessionStorage.getItem("pst");
+        let computer = +sessionStorage.getItem("computer");
+        let total = urdu + math + physics + computer + english + pst;
+        let percentage = (total / 600) * 100;
+        let grade;
+        let engremarks;
+        let urduremarks;
+        let physicsremarks;
+        let computerremarks;
+        let pstremarks;
+        let mathremarks;
+
+
+
+
+    //---------------- english remarks condition ----------------// 
+
+        if (english <= 39) {
+            engremarks = "Failed"
+            
+         
+        } else {
+            engremarks = "passed"
+        }
+
+// ----------------------Urdu remarks condition------------ 
+if (urdu <= 39) {
+                urduremarks = "Failed"
+            } else {
+                urduremarks = "passed"
+            }
+// ----------------------Math remarks condition------------ 
+if (math <= 39) {
+                mathremarks = "Failed"
+            } else {
+                mathremarks = "passed"
+            }
+// ----------------------computer remarks condition------------ 
+
+if (computer <= 39) {
+                computerremarks = "Failed"
+            } else {
+                computerremarks = "passed"
+            }
+// ----------------------physics remarks condition------------ 
+
+
+if (physics <= 39) {
+                physicsremarks = "Failed"
+            } else {
+                physicsremarks = "passed"
+            }
+// ----------------------pst remarks condition------------ 
+if (pst <= 39) {
+                pstremarks = "Failed"
+            } else {
+                pstremarks = "passed"
+            }
+
+
+
+
+//------------------- percentage condition ---------------// 
+
+        if (percentage >= 80) {
+            grade = "A-one";
+        } else if (percentage >= 69) {
+            grade = "A";
+        } else if (percentage >= 59) {
+            grade = "B";
+        } else if (percentage >= 49) {
+            grade = "C";
+        } else if (percentage >= 39) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+
+        // Display retrieved values in the HTML
+        document.getElementById("outputSname").textContent = Sname;
+        document.getElementById("outputFname").textContent = fname;
+        document.getElementById("outputRollno").textContent = Rollno;
+        document.getElementById("outputClass").textContent = clas;
+        document.getElementById("outputEnglish").textContent = english;
+        document.getElementById("outputUrdu").textContent = urdu;
+        document.getElementById("outputMath").textContent = math;
+        document.getElementById("outputPhysics").textContent = physics;
+        document.getElementById("outputPst").textContent = pst;
+        document.getElementById("outputComputer").textContent = computer;
+        document.getElementById("outputTotal").textContent = total;
+        document.getElementById("outputPercentage").textContent = percentage.toFixed(2);
+        document.getElementById("outputGrade").textContent = grade;
+        document.getElementById("outputengremarks").textContent = engremarks;
+        document.getElementById("outputurduremarks").textContent = urduremarks;
+        document.getElementById("outputphysicsremarks").textContent = physicsremarks;
+        document.getElementById("outputcomputerremarks").textContent = computerremarks;
+        document.getElementById("outputmathremarks").textContent = mathremarks;
+        document.getElementById("outputpstremarks").textContent = pstremarks;
+
+    </script>
+</body>
+
+</html>
